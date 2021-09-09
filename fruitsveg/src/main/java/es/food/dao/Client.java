@@ -42,12 +42,12 @@ public class Client {
 	private String surname;
 
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "address_id", referencedColumnName = "id", unique = true)
-//	@NotNull(message = "You have to assign this client to an address")
-//	@Valid
-//	private Address address;	
-//
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id", unique = true)
+	@NotNull(message = "You have to assign this client to an address")
+	//@Valid
+	private Address address;	
+
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
 //	@NotNull(message = "You have to assign this client to an user")
@@ -58,11 +58,11 @@ public class Client {
 
 	}
 
-	public Client(String dni,  String name,String surname) {//public Client(String dni,  String name,String surname, Address address, User user) {
+	public Client(String dni,  String name,String surname, Address address) {//public Client(String dni,  String name,String surname, Address address, User user) {
 		this.dni = dni;
 		this.name = name;
 		this.surname = surname;
-//		this.address = address;
+		this.address = address;
 //		this.user = user;
 	}
 	
@@ -99,14 +99,14 @@ public class Client {
 		this.surname = surname;
 	}	
 	
-//	public Address getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
-//	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
 //	public User getUser() {
 //		return user;
 //	}
