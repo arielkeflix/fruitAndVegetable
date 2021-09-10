@@ -1,6 +1,4 @@
 package es.food.dao;
-
-
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
@@ -10,6 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.*;
+
 
 @Entity
 @Table(name = "users")

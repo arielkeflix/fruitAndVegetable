@@ -17,6 +17,9 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 
 @Entity
 @Table(name = "clients")
@@ -48,22 +51,22 @@ public class Client {
 	//@Valid
 	private Address address;	
 
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
-//	@NotNull(message = "You have to assign this client to an user")
-//	@Valid
-//	private User user;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", unique = true, nullable = false)
+	@NotNull(message = "You have to assign this client to an user")
+	@Valid
+	private User user;
 
 	public Client() {
 
 	}
 
-	public Client(String dni,  String name,String surname, Address address) {//public Client(String dni,  String name,String surname, Address address, User user) {
+	public Client(String dni,  String name,String surname, Address address, User user) {
 		this.dni = dni;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
-//		this.user = user;
+		this.user = user;
 	}
 	
 
@@ -107,12 +110,12 @@ public class Client {
 		this.address = address;
 	}
 	
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }

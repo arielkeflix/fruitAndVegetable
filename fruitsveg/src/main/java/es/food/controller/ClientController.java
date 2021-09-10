@@ -30,10 +30,14 @@ public class ClientController {
 			map.put("success", "true");
 			map.put("message", "clients found");
 			map.put("client", clientList);	
+			for(ClientDTO c:clientList) {
+				System.out.println("User: "+c.getUser() );
+			}
 		} catch (Exception e) {
 			map.put("success", "false");
 			map.put("message", e.getMessage());
 		}
+		
 		
 		return map;
 	}
