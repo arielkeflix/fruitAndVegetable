@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 
 
 import es.food.dto.ClientDTO;
+import es.food.exceptions.ArgumentNotFoundException;
 import es.food.repository.IClientRepository;
 
 @Service
@@ -22,13 +23,14 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public List<ClientDTO> getAllClients() {
 		
-//		if (repository.findAll().isEmpty()) {
-//			throw new ArgumentNotFoundException("No clients found. ");
-//		}
-		List<ClientDTO> clientDTO =  clientRepository.findAll().stream().map(client -> modelMapper
+		if (clientRepository.findAll().isEmpty()) {
+			throw new ArgumentNotFoundException("No clients found. ");
+		}
+		List<ClientDTO> listClientDTO =  clientRepository.findAll().stream()
+				.map(client -> modelMapper
 				.map(client, ClientDTO.class))
 				.collect(Collectors.toList());
-		return clientDTO;
+		return listClientDTO;
 	}
 
 }
